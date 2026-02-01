@@ -176,3 +176,28 @@ class MazeGenerator:
 
 		# TODO: Check for 3x3 open areas
 		# TODO: Add border walls
+
+	def _check_no_large_rooms(self) -> None:
+		"""
+		Ensures no 3x3 or larger open areas exist.
+		"""
+
+		for y in range(self.height - 2):
+			for x in range(self.width - 2):
+				if self._is_3x3_open(x, y):
+					self.grid[y + 1][x + 1] = 0xF
+
+	def _is_3x3_open(self, x: int, y: int) -> bool:
+		
+		for dy in range(3):
+			for dx in range(3):
+				cell_x, cell_y = x + dx, y + dy
+				cell = self.grid[cell_y][cell_x]
+
+				# Cell should have walls on some sides
+				# If cell is 0x0 (all open), that's odd
+				# but we need to check actual opennes between cells
+				pass
+		# Simplified: check if center and surrounding cells are too open
+		# I'll come to this later (TODO)
+		return False
