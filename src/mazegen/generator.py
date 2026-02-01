@@ -1,4 +1,5 @@
 from typing import List, Tuple, Optional, Set
+from collections import deque
 import random
 from .utils import (
 	Direction, OPPOSITE, get_neighbor, remove_wall,
@@ -201,3 +202,50 @@ class MazeGenerator:
 		# Simplified: check if center and surrounding cells are too open
 		# I'll come to this later (TODO)
 		return False
+	
+	def find_shorted_path(self, start: Tuple[int, int], end: Tuple[int, int]):
+		"""
+		Find shortest path using BFS.
+		
+		Args:
+			start: Starting position (x, y)
+			end: Ending position (x, y)
+			
+		Returns:
+			List of directions (N, E, S, W) or None if no path
+		"""
+		queue: deque = deque([(start, [])])
+		visited: Set[Tuple[int, int]] = {start}
+
+		while queue:
+			current, path = queue.popleft()
+
+			if current == end:
+				return path
+			
+			# Try all four directions
+			for direction in Direction:
+				# Check if wall exists in this direction
+				x, y = current
+				if has_wall(self.grid[y][x], direction):
+					continue
+					
+				# Get neighbor position
+				neighbor = get_neighbor(current, direction)
+
+				# Skip if already visited or out of bounds
+				if not self._in_bounds(neighbor) or neighbor in visited:
+					continue
+					
+				visited.add(neighbor)
+				queue.append((neighbor, path + [direction]))
+
+		return None
+
+	def path_to_string(self, path: Optional[List[Direction]]) -> str:
+		"""Convert path to string format (NESW)."""
+		if path is None:
+			return ""
+		return ''.join(direction_to_char(d) for d in path)
+	
+	
