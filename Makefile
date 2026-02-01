@@ -6,7 +6,7 @@ install:
 	pip install pytest mypy flake8
 
 run:
-	python3 a_maze_ing.py config.txt
+	source venv/bin/activate && python a_maze_ing.py config.txt
 
 debug:
 	python3 -m pdb a_maze_ing.py config.txt
