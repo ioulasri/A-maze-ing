@@ -127,4 +127,52 @@ class MazeGenerator:
 			lines.append(line)
 		return '\n'.join(lines)
 	
+	def _add_42_pattern(self) -> bool:
+		"""
+		Add '42' pattern made of fully closed cells.
+		
+		Returns:
+			True if pattern was added, False if maze too small
+		"""
+
+		pattern = [
+            [1, 1, 1, 1, 0, 1, 1, 1],
+            [1, 0, 0, 1, 0, 1, 0, 0],
+            [1, 0, 0, 1, 0, 1, 1, 1],
+            [1, 1, 1, 1, 0, 0, 0, 1],
+            [0, 0, 0, 1, 0, 1, 1, 1],
+        ]
+
+		pattern_height = len(pattern)
+		pattern_width = len(pattern[0])
+
+		# Check if naze is large enough
+		if self.wifth < pattern_width + 2 or self.height < pattern_height + 2:
+			return False
+		
+		# Place in center area and in a suitable location
+		start_x = (self.width - pattern_width) // 2
+		start_y = (self.height - pattern_height) // 2
+
+		# Close cells according to pattern
+		for py in range(pattern_height):
+			for px in range(pattern_width):
+				if pattern[py][px] == 1:
+					x = start_x + px
+					y = start_y + py
+					self.grid[x][y] == 0xF
+		
+		return True
 	
+	def generate(self, entry: Tuple[int, int], exit_pos: Tuple[int, int]) -> None:
+		"""Generate maze with all features."""
+
+		# Generate basic maze
+		self._recursive_backtracker(entry)
+
+		# Add 42 pattern
+		if not self._add_42_pattern():
+			print("Warning: Maze too small for '42' pattern")
+
+		# TODO: Check for 3x3 open areas
+		# TODO: Add border walls
