@@ -1,0 +1,18 @@
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+[build-system]
+requires = ["setuptools>=45", "wheel", "build"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "A-maze-ING"
+version = "1.0.0"
+description = "Maze generator"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    {name = "imad OULASRI", email = "imad.oulasri01@gmail.com"}
+]
+
+[project.urls]
+Homepage = "https://github.com/ioulasri/a-maze-ing"
