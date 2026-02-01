@@ -112,7 +112,7 @@ class MazeGenerator:
 
 	def get_cell(self, x: int, y: int) -> int:
 		"""Get cell value at position."""
-		return self.grid[x][y]
+		return self.grid[y][x]
 	
 	def to_hex_string(self) -> str:
 		"""
@@ -203,7 +203,7 @@ class MazeGenerator:
 		# I'll come to this later (TODO)
 		return False
 	
-	def find_shorted_path(self, start: Tuple[int, int], end: Tuple[int, int]):
+	def find_shortest_path(self, start: Tuple[int, int], end: Tuple[int, int]):
 		"""
 		Find shortest path using BFS.
 		
@@ -247,5 +247,4 @@ class MazeGenerator:
 		if path is None:
 			return ""
 		return ''.join(direction_to_char(d) for d in path)
-	
 	
