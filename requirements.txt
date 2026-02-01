@@ -1,0 +1,6 @@
+# No external dependencies needed for basic version
+# Optional for enhanced features:
+colorama>=0.4.6  # Cross-platform colored terminal
+pytest>=7.4.0    # Testing framework
+mypy>=1.5.0      # Type checking
+flake8>=6.1.0    # Linting
