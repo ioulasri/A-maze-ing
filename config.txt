@@ -1,6 +1,19 @@
+# A-Maze-ing Configuration File
+# Lines starting with # are comments
+
+# Maze dimensions
 WIDTH=20
 HEIGHT=15
+
+# Entry and exit points (x,y coordinates)
 ENTRY=0,0
 EXIT=19,14
+
+# Output file path
 OUTPUT_FILE=maze.txt
+
+# Generate perfect maze (single path between entry and exit)
 PERFECT=True
+
+# Optional: Random seed for reproducibility
+# SEED=42
