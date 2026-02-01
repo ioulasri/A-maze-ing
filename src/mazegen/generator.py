@@ -147,7 +147,7 @@ class MazeGenerator:
 		pattern_width = len(pattern[0])
 
 		# Check if naze is large enough
-		if self.wifth < pattern_width + 2 or self.height < pattern_height + 2:
+		if self.width < pattern_width + 2 or self.height < pattern_height + 2:
 			return False
 		
 		# Place in center area and in a suitable location
