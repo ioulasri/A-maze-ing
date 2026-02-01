@@ -1,6 +1,6 @@
 # A-Maze-ing
 
-*This project has been created as part of the 42 curriculum by <your_login>.*
+*This project has been created as part of the 42 curriculum by imoulasr.*
 
 ## Description
 
@@ -95,7 +95,7 @@ See package documentation for full API reference.
 ## Team Management
 
 ### Team Members
-- <your_login>: Lead developer, algorithm implementation, package creation
+- imoulasr: Lead developer, algorithm implementation, package creation
 
 ### Project Planning
 
